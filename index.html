@@ -36,7 +36,7 @@
                     </span>
                 </div>
                 <div>
-                    <a href="#" class="mais-info">
+                    <a href="#" class="mais-info" onclick="abrirInfoNegocio()">
                         <span class="material-symbols-outlined hr-funcionamento">
                             add
                         </span>
@@ -46,7 +46,7 @@
             </div>
         </section>
     </header>
-    
+
     <section id="cardapio">
         <section id="menu">
             <div class="list-hamb">
@@ -284,6 +284,41 @@
         </div>
     </section>
 
+    <!-- Janela flutuante + informações -->
+    <section class="info-negocio">
+        <div id="janela-info-negocio">
+            <div class="janela-centro-info-negocio">
+                <div class="bt-close bt-info-nrgocio">
+                    <button class="button-close" onclick="fecharJanela()">
+                        <span class="material-symbols-outlined">
+                            cancel
+                        </span>
+                    </button>
+                </div>
+                <div class="caixa-info info-hamb">
+                    <h4><span class="material-symbols-outlined hr-funcionamento">
+                            schedule
+                        </span>Horário de funcionamento</h4>
+                    <p class="desc-hamb">Segunda à sexta - 18 às 22 horas.</p>
+                </div>
+                <div class="caixa-info info-hamb">
+                    <h4><span class="material-symbols-outlined">
+                            location_on
+                        </span>Endereço</h4>
+                    <p class="desc-hamb">José Giffoni, n° 35.</p>
+                </div>
+                <div class="caixa-info info-hamb">
+                    <h4><span class="material-symbols-outlined">
+                        paid
+                        </span>Formas de pagamento</h4>
+                    <p class="desc-hamb">Débito</p>
+                    <p class="desc-hamb">Crédito</p>
+                    <p class="desc-hamb">Dinheiro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="ver-carrinho">
         <button class="button bt-ver-carrinho" onclick="abrirJanela()">
             <div class="info-bt-ver-carrinho">
@@ -293,7 +328,7 @@
                     shopping_cart
                 </span>
             </div>
-            <div class="valor-ver-carrinho">127</div>
+            <div class="valor-ver-carrinho"><span id="total-carrinho"></span></div>
         </button>
     </footer>
 

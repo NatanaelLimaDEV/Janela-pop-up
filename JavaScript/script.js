@@ -3,14 +3,20 @@ let buttonAdd = document.querySelector('button.add-cart')
 let menu = document.getElementById('menu')
 let itens = document.getElementById('itens')
 let totalDiv = document.getElementById('total')
+let totalBtCarrinho = document.getElementById('total-carrinho')
 let contCart = document.getElementById('quant-cart')
 let endereco = document.getElementById('end')
 let erroEnd = document.querySelector('p.erro')
 let spanHora = document.getElementById('data-span')
+let janInfoNegocio = document.getElementById('janela-info-negocio')
 
 let aberto = veriRestoHora()
 
 let cart = []
+
+function abrirInfoNegocio(){
+    janInfoNegocio.style.display = 'flex'
+}
 
 function abrirJanela() {
 
@@ -34,12 +40,19 @@ function abrirJanela() {
 
 function fecharJanela() {
     jan.style.display = 'none'
+    janInfoNegocio.style.display = 'none'
 }
 
 // fechando janela ao clicar na parte transparente
 jan.addEventListener('click', function (event) {
     if (event.target === jan) {
         jan.style.display = 'none'
+    }
+})
+
+janInfoNegocio.addEventListener('click', function (event) {
+    if (event.target === janInfoNegocio) {
+        janInfoNegocio.style.display = 'none'
     }
 })
 
@@ -128,6 +141,11 @@ function updateCart() {
             currency: 'BRL'
         })
 
+        totalBtCarrinho.textContent = total.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        })
+
         contCart.style.display = 'flex'
         contCart.innerHTML = cart.length
     })
@@ -164,6 +182,18 @@ function removeItemCart(nome) {
         let item = cart[index]
 
         if (item.quantidade > 1) {
+            Toastify({
+                text: "Item removido do carrinho!",
+                duration: 3000,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "#ef4444",
+                },
+            }).showToast()
+            
             item.quantidade--
 
             updateCart()

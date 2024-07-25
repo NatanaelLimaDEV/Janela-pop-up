@@ -301,7 +301,7 @@ button{
 
     background-color: #f6f7f8;
     border-radius: 20px;
-    width: 300px;
+    width: 400px;
     padding: 20px;
 
     overflow: auto;
@@ -377,4 +377,60 @@ button{
     display: none;
     font-weight: 400;
     font-size: 12px;
+}
+
+.info-negocio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#janela-info-negocio{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    background-color: rgba(0,0,0,.7);
+}
+
+.janela-centro-info-negocio{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+    background-color: #f6f7f8;
+    border-radius: 20px;
+    width: 300px;
+    padding: 20px;
+}
+
+.caixa-info{
+    margin-top: 10px;
+}
+
+.caixa-info > h4{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.caixa-info > h4 > span{
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.caixa-info > p {
+    margin-left: 20px;
 }
