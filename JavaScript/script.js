@@ -208,6 +208,7 @@ function removeItemCart(nome) {
     if (cart.length === 0) {
         fecharJanela()
         contCart.style.display = 'none'
+        totalBtCarrinho.textContent = ''
     }
 
     Toastify({
