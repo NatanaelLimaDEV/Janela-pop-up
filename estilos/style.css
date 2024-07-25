@@ -77,6 +77,7 @@ button{
     display: flex;
     justify-content: center;
     width: 100%;
+    overflow: auto;
 }
 
 #menu{
@@ -144,10 +145,14 @@ button{
 }
 
 .ver-carrinho{
-    width: 100%;
+    width: 100vw;
     position: fixed;
     bottom: 0;
-    z-index: 99;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    height: 50px;
+    display: flex;
 }
 
 .button-cart{
@@ -296,7 +301,7 @@ button{
 
     background-color: #f6f7f8;
     border-radius: 20px;
-    width: 400px;
+    width: 300px;
     padding: 20px;
 
     overflow: auto;
