@@ -37,8 +37,8 @@ button{
 
 .cento-info-hr{
     margin: auto;
+    max-width: 800px;
     padding: 20px;
-    width: 800px;
     font-weight: 600;
 }
 
