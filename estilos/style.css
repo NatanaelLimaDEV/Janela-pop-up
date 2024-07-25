@@ -1,0 +1,375 @@
+@charset "UTF-8";
+
+*{
+    font-family: "Manrope", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: #e9e9e9;
+}
+
+button{
+    cursor: pointer;
+}
+
+.topo-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #fff;
+}
+
+.logo{
+    width: 200px;
+}
+
+.info-hr{
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.cento-info-hr{
+    margin: auto;
+    padding: 20px;
+    width: 800px;
+    font-weight: 600;
+}
+
+#data-span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    font-size: 13px;
+}
+
+#data-span > span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mais-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(72, 84, 96);
+    font-size: 13px;
+}
+
+.mais-info > span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.hr-funcionamento{
+    margin-right: 2px;
+}
+
+#cardapio{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#menu{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 800px;
+    margin-bottom: 80px;
+}
+
+.list-hamb{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 10px 10px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.list-hamb:hover{
+    background-color: #f9f9f9;
+}
+
+.burguer{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.info-hamb{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    margin-left: 5px;
+    color: rgb(72, 84, 96);
+}
+
+.info-hamb > p {
+    padding: 3px;
+}
+
+.desc-hamb{
+    font-weight: 500;
+    color: rgb(127, 143, 159);
+    font-size: 12px;
+}
+
+.cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.cart-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ver-carrinho{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+}
+
+.button-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.bt-close{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+}
+
+.button-close{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    color: #a50000;
+    background-color: #f6f7f8;
+}
+
+.button-rem{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    color: #a50000;
+    background-color: #f6f7f8;
+}
+
+.button-add{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    color: #005300;
+    background-color: #f6f7f8;
+}
+
+.add-cart, .button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    color: #fff;
+    background-color: rgb(48, 51, 60);
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    transition: .3s;
+}
+
+.add-cart:hover{
+    background-color: rgb(40, 40, 40);
+}
+
+.bt-ver-carrinho{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: rgb(48, 51, 60);
+    padding: 20px;
+    width: 100%;
+    border-radius: 0;
+}
+
+.bt-ver-carrinho:hover{
+    background-color: rgb(40, 40, 40);
+}
+
+#quant-cart{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: rgb(48, 51, 60);
+}
+
+.info-bt-ver-carrinho{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 120px;
+}
+
+.valor-ver-carrinho{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100px;
+}
+
+.finalizar{
+    background-color: #007400;
+    width: 100%;
+}
+
+.button > p{
+    padding-right: 10px;
+    font-family: Verdana;
+    font-weight: 600;
+}
+
+
+.finalizar:hover{
+    background-color: #005300;
+}
+
+#janela{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    background-color: rgba(0,0,0,.7);
+}
+
+.j-centro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #f6f7f8;
+    border-radius: 20px;
+    width: 400px;
+    padding: 20px;
+
+    overflow: auto;
+}
+
+#itens{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.cardItensList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.itensList{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cardItensList > div > p {
+    padding: 2px;
+}
+
+.burguer-listCard{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.btn-itensList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+}
+
+.cartEnd{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0;
+    font-family: Verdana;
+    font-weight: 600;
+}
+
+#end{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #b8b8b8;
+    margin-top: 5px;
+}
+
+.totalValor{
+    align-self: self-start;
+    margin-top: 20px;
+}
+
+.erro{
+    color: #a50000;
+    display: none;
+    font-weight: 400;
+    font-size: 12px;
+}

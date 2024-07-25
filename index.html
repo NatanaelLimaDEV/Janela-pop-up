@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link rel="stylesheet" href="estilos/style.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <section class="topo-logo">
+            <img class="logo" src="imagens/logo.png" alt="logo">
+        </section>
+        
+        <section class="info-hr">
+            <div class="cento-info-hr">
+                <div id="data-span">
+                    <span class="material-symbols-outlined hr-funcionamento">
+                        schedule
+                    </span>
+                </div>
+                <div>
+                    <a href="#" class="mais-info">
+                        <span class="material-symbols-outlined hr-funcionamento">
+                            add
+                        </span>
+                        <p>Informações</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </header>
+    <section id="cardapio">
+        <section id="menu">
+            <div class="list-hamb">
+                <img src="imagens/hamb-1.png" alt="Smash" class="burguer">
+                <div class="info-hamb">
+                    <p>Hamburguer Smash</p>
+                    <p class="desc-hamb">Pão levinho de fermentação natural da Trigou, burguer 160g, queijo prato e
+                        maionese da casa. Pão levinho de fermentação natural da Trigou, burguer 160g, queijo prato e
+                        maionese da casa.</p>
+                    <div class="cart">
+                        <p>R$ 18.90</p>
+                        <button class="add-cart" data-name="Hamburguer Smash" data-preco="18.90">
+                            <span class="material-symbols-outlined">
+                                add_shopping_cart
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-hamb">
+                <img src="imagens/hamb-2.png" alt="Smash" class="burguer">
+                <div class="info-hamb">
+                    <p>Hamburguer Bacon</p>
+                    <p class="desc-hamb">Pão levinho de fermentação natural da Trigou, burguer 160g, queijo prato e
+                        maionese da casa.</p>
+                    <div class="cart">
+                        <p>R$ 21</p>
+                        <button class="add-cart" data-name="Hamburguer Bacon" data-preco="21">
+                            <span class="material-symbols-outlined">
+                                add_shopping_cart
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-hamb">
+                <img src="imagens/hamb-3.png" alt="Smash" class="burguer">
+                <div class="info-hamb">
+                    <p>Hamburguer Nacho</p>
+                    <p class="desc-hamb">Pão levinho de fermentação natural da Trigou, burguer 160g, queijo prato e
+                        maionese da casa.</p>
+                    <div class="cart">
+                        <p>R$ 17</p>
+                        <button class="add-cart" data-name="Hamburguer Nacho" data-preco="17">
+                            <span class="material-symbols-outlined">
+                                add_shopping_cart
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="list-hamb">
+                <img src="imagens/hamb-4.png" alt="Smash" class="burguer">
+                <div class="info-hamb">
+                    <p>Hamburguer Moda Casa</p>
+                    <p class="desc-hamb">Pão levinho de fermentação natural da Trigou, burguer 160g, queijo prato e
+                        maionese da casa.</p>
+                    <div class="cart">
+                        <p>R$ 22</p>
+                        <button class="add-cart" data-name="Hamburguer Moda Casa" data-preco="22">
+                            <span class="material-symbols-outlined">
+                                add_shopping_cart
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Janela flutuante do carrinho -->
+    <section class="cart-list">
+        <div id="janela">
+            <div class="j-centro">
+                <div class="bt-close">
+                    <button class="button-close" onclick="fecharJanela()">
+                        <span class="material-symbols-outlined">
+                            cancel
+                        </span>
+                    </button>
+                </div>
+                <div id="itens"></div>
+                <div class="totalValor">Total: <span id="total"></span></div>
+                <div class="cartEnd">
+                    <p>Endereço de entrega:</p>
+                    <input type="text" name="end" id="end" placeholder="Digite seu endereço completo">
+
+                    <p class="erro">Digite seu endereço completo!</p>
+                </div>
+                <div class="button-cart">
+                    <button class="finalizar button" onclick="finalizarPedido()">
+                        <p>Finalizar pedido</p>
+                        <span class="material-symbols-outlined">
+                            check
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="ver-carrinho">
+        <button class="button bt-ver-carrinho" onclick="abrirJanela()">
+            <div class="info-bt-ver-carrinho">
+                <span id="quant-cart">0</span>
+                <p>Carrinho</p>
+                <span class="material-symbols-outlined">
+                    shopping_cart
+                </span>
+            </div>
+            <div class="valor-ver-carrinho">127</div>
+        </button>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="JavaScript/script.js"></script>
+</body>
+
+</html>
