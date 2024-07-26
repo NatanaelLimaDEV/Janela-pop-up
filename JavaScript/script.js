@@ -300,7 +300,7 @@ function finalizarPedido() {
     }).join('')
 
     let mensagem = encodeURIComponent(cartList)
-    let fone = "88997458919"
+    let fone = "+5588997458919"
 
     window.open(`https://wa.me/${fone}?text=${mensagem}%0A Endereço -> Rua: ${endereco.value}%0A Número: ${endNum.value}%0A Complemnto: ${endComp.value}%0A Ponto de referência: ${endRef.value}%0A Bairro: ${endBairro.value}`, '_blank')
 
