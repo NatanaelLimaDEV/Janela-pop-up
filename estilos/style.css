@@ -299,7 +299,7 @@ button{
     justify-content: space-between;
     align-items: center;
 
-    background-color: #f6f7f8;
+    background-color: #fff;
     border-radius: 20px;
     width: 300px;
     padding: 20px;
@@ -360,16 +360,43 @@ button{
     font-weight: 600;
 }
 
-#end{
+.cartEnd > input{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #b8b8b8;
     margin-top: 5px;
 }
 
+.org-numComp{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.org-numComp-sec{
+    display: flex;
+    flex-direction: column;
+}
+
+.org-numComp-sec > input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #b8b8b8;
+    margin-top: 5px;
+}
+
+#num{
+    width: 70px;
+}
+
 .totalValor{
     align-self: self-start;
     margin-top: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(72, 84, 96);
 }
 
 .erro{

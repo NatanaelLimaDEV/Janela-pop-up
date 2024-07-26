@@ -266,12 +266,30 @@
                 </div>
                 <div id="itens"></div>
                 <div class="totalValor">Total: <span id="total"></span></div>
-                <div class="cartEnd">
-                    <p>Endereço de entrega:</p>
-                    <input type="text" name="end" id="end" placeholder="Digite seu endereço completo">
+                <form class="cartEnd">
 
-                    <p class="erro">Digite seu endereço completo!</p>
-                </div>
+                    <label for="endereco" class="desc-hamb">Rua, avenida, praça, travessa*</label>
+                    <input type="text" name="endereco" id="end" placeholder="Ex: Av José Monteiro de Melo.">
+
+                    <div class="org-numComp">
+                        <div class="org-numComp-sec">
+                            <label for="numero" class="desc-hamb">Número*</label>
+                            <input type="text" name="numero" id="num">
+                        </div>
+                        <div class="org-numComp-sec">
+                            <label for="complemento" class="desc-hamb">Complemento</label>
+                            <input type="text" name="complemento" id="comp">
+                        </div>
+                    </div>
+
+                    <label for="referencia" class="desc-hamb">Ponto de referência?</label>
+                    <input type="text" name="referencia" id="ref">
+
+                    <label for="bairro" class="desc-hamb">Bairro*</label>
+                    <input type="text" name="bairro" id="bairro">
+
+                    <p class="erro">* Campos obrigatórios!</p>
+                </form>
                 <div class="button-cart">
                     <button class="finalizar button" onclick="finalizarPedido()">
                         <p>Finalizar pedido</p>

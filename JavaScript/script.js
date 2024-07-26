@@ -6,6 +6,10 @@ let totalDiv = document.getElementById('total')
 let totalBtCarrinho = document.getElementById('total-carrinho')
 let contCart = document.getElementById('quant-cart')
 let endereco = document.getElementById('end')
+let endNum = document.getElementById('num')
+let endComp = document.getElementById('comp')
+let endRef = document.getElementById('ref')
+let endBairro = document.getElementById('bairro')
 let erroEnd = document.querySelector('p.erro')
 let spanHora = document.getElementById('data-span')
 let janInfoNegocio = document.getElementById('janela-info-negocio')
@@ -14,7 +18,7 @@ let aberto = veriRestoHora()
 
 let cart = []
 
-function abrirInfoNegocio(){
+function abrirInfoNegocio() {
     janInfoNegocio.style.display = 'flex'
 }
 
@@ -193,7 +197,7 @@ function removeItemCart(nome) {
                     background: "#ef4444",
                 },
             }).showToast()
-            
+
             item.quantidade--
 
             updateCart()
@@ -225,7 +229,7 @@ function removeItemCart(nome) {
 }
 
 
-// Finalizar pedido
+// Validar campos obrigatórios
 endereco.addEventListener('input', function (event) {
     let endValor = event.target.value
 
@@ -234,7 +238,24 @@ endereco.addEventListener('input', function (event) {
         endereco.style.borderColor = '#b8b8b8'
     }
 })
+endNum.addEventListener('input', function (event) {
+    let endValor = event.target.value
 
+    if (endValor !== "") {
+        erroEnd.style.display = 'none'
+        endNum.style.borderColor = '#b8b8b8'
+    }
+})
+endBairro.addEventListener('input', function (event) {
+    let endValor = event.target.value
+
+    if (endValor !== "") {
+        erroEnd.style.display = 'none'
+        endBairro.style.borderColor = '#b8b8b8'
+    }
+})
+
+// Finalizar pedido
 function finalizarPedido() {
 
     let aberto = veriRestoHora()
@@ -255,23 +276,33 @@ function finalizarPedido() {
 
     if (cart.length === 0) return
 
-    if (endereco.value === "") {
+    if (endereco.value === "" || endNum.value === "" || endBairro.value === "") {
         erroEnd.style.display = 'flex'
-        endereco.style.borderColor = '#a50000'
+
+        if (endereco.value === "") {
+            endereco.style.borderColor = '#a50000'
+        }
+        if (endNum.value === "") {
+            endNum.style.borderColor = '#a50000'
+        }
+        if (endBairro.value === "") {
+            endBairro.style.borderColor = '#a50000'
+        }
+
         return
     }
 
     // Enviar o pedido api WhatsApp
     let cartList = cart.map((item) => {
         return (
-            ` ${item.nome}, Quantidade: (${item.quantidade}) Preço: R$ ${item.preco} /`
+            ` ${item.nome}, Quantidade: (${item.quantidade}) Preço: R$ ${item.preco}`
         )
     }).join('')
 
     let mensagem = encodeURIComponent(cartList)
     let fone = "88997458919"
 
-    window.open(`https://wa.me/${fone}?text=${mensagem} Endereço: ${endereco.value}`, '_blank')
+    window.open(`https://wa.me/${fone}?text=${mensagem}%0A Endereço -> Rua: ${endereco.value}%0A Número: ${endNum.value}%0A Complemnto: ${endComp.value}%0A Ponto de referência: ${endRef.value}%0A Bairro: ${endBairro.value}`, '_blank')
 
     cart = []
     updateCart()
@@ -279,13 +310,19 @@ function finalizarPedido() {
     fecharJanela()
     contCart.innerHTML = cart.length
     endereco.value = ""
+    endNum.value = ""
+    endComp.value = ""
+    endRef.value = ""
+    endBairro.value = ""
+    contCart.style.display = 'none'
+    totalBtCarrinho.textContent = ''
 }
 
 // Verificar horário
 function veriRestoHora() {
     let data = new Date()
     let hora = data.getHours()
-    return hora >= 18 && hora < 22
+    return hora >= 1 && hora < 22
 
     // True = aberto
 }
