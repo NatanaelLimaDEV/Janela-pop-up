@@ -31,13 +31,13 @@
         <section class="info-hr">
             <div class="cento-info-hr">
                 <div id="data-span">
-                    <span class="material-symbols-outlined hr-funcionamento">
+                    <span class="material-symbols-outlined margin-right-Span">
                         schedule
                     </span>
                 </div>
                 <div>
                     <a href="#" class="mais-info" onclick="abrirInfoNegocio()">
-                        <span class="material-symbols-outlined hr-funcionamento">
+                        <span class="material-symbols-outlined margin-right-Span">
                             add
                         </span>
                         <p>Informações</p>
@@ -265,8 +265,21 @@
                     </button>
                 </div>
                 <div id="itens"></div>
-                <div class="totalValor">Total: <span id="total"></span></div>
-                <form class="cartEnd">
+                <div class="totalValor">
+                    <span class="material-symbols-outlined margin-right-Span">
+                        paid
+                    </span>
+                    <p>Total: <span id="total"></span></p>
+                </div>
+                <div class="addEndereco" onclick="addEndereco()">
+                    <div class="mais-info">
+                        <span class="material-symbols-outlined margin-right-Span">
+                            add_location_alt
+                        </span>
+                        <p>Adicionar endereço</p>
+                    </div>
+                </div>
+                <form class="cartEnd" id="formEndereco">
 
                     <label for="endereco" class="desc-hamb">Rua, avenida, praça, travessa*</label>
                     <input type="text" name="endereco" id="end" placeholder="Ex: Av José Monteiro de Melo.">
@@ -289,6 +302,21 @@
                     <input type="text" name="bairro" id="bairro">
 
                     <p class="erro">* Campos obrigatórios!</p>
+                </form>
+                <form class="pag-formulario">
+                    <label for="formPagamento" class="mais-info">
+                        <span class="material-symbols-outlined margin-right-Span">
+                            payments
+                        </span>
+                        <p>Selecione a forma de pagamento*</p>
+                    </label>
+                    <select name="formPagamento" id="formPag">
+                        <option value="">---</option>
+                        <option value="Débito">Débito</option>
+                        <option value="Crédito">Crédito</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Pix">Pix</option>
+                    </select>
                 </form>
                 <div class="button-cart">
                     <button class="finalizar button" onclick="finalizarPedido()">
@@ -327,7 +355,7 @@
                 </div>
                 <div class="caixa-info info-hamb">
                     <h4><span class="material-symbols-outlined">
-                        paid
+                            paid
                         </span>Formas de pagamento</h4>
                     <p class="desc-hamb">Débito</p>
                     <p class="desc-hamb">Crédito</p>

@@ -10,7 +10,9 @@ let endNum = document.getElementById('num')
 let endComp = document.getElementById('comp')
 let endRef = document.getElementById('ref')
 let endBairro = document.getElementById('bairro')
+let formEnd = document.getElementById('formEndereco')
 let erroEnd = document.querySelector('p.erro')
+let formPag = document.getElementById('formPag')
 let spanHora = document.getElementById('data-span')
 let janInfoNegocio = document.getElementById('janela-info-negocio')
 
@@ -228,6 +230,14 @@ function removeItemCart(nome) {
     }).showToast()
 }
 
+// Abrir formulario de endereço
+function addEndereco(){
+    if(formEnd.style.display === 'flex'){
+        formEnd.style.display = 'none'
+    } else{
+        formEnd.style.display = 'flex'
+    }
+}
 
 // Validar campos obrigatórios
 endereco.addEventListener('input', function (event) {
@@ -276,37 +286,81 @@ function finalizarPedido() {
 
     if (cart.length === 0) return
 
-    if (endereco.value === "" || endNum.value === "" || endBairro.value === "") {
-        erroEnd.style.display = 'flex'
+    if (endereco.value === "" && endNum.value === "" && endBairro.value === ""){
+        Toastify({
+            text: "Adicione um endereço!",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "#ef4444",
+            },
+        }).showToast()
+
+        if(formEnd.style.display !== 'flex'){
+            formEnd.style.display = 'flex'
+        }
+
+        return
+    }
+
+    if (endereco.value === "" || endNum.value === "" || endBairro.value === "" || formPag.value === "") {
 
         if (endereco.value === "") {
+            erroEnd.style.display = 'flex'
             endereco.style.borderColor = '#a50000'
         }
         if (endNum.value === "") {
+            erroEnd.style.display = 'flex'
             endNum.style.borderColor = '#a50000'
         }
         if (endBairro.value === "") {
+            erroEnd.style.display = 'flex'
             endBairro.style.borderColor = '#a50000'
+        }
+        if (formPag.value === "") {
+            Toastify({
+                text: "Selecione uma forma de pagamento!",
+                duration: 3000,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "#ef4444",
+                },
+            }).showToast()
         }
 
         return
     }
 
     // Enviar o pedido api WhatsApp
-    let cartList = cart.map((item) => {
+    let itemNomeQuant = cart.map((item) => {
         return (
-            ` ${item.nome}, Quantidade: (${item.quantidade}) Preço: R$ ${item.preco}`
+            ` -> ${item.nome}, Quantidade: ${item.quantidade}`
+        )
+    }).join('')
+    let itemPreco = cart.map((item) => {
+        return (
+            `Preço: R$ ${item.preco}`
         )
     }).join('')
 
-    let mensagem = encodeURIComponent(cartList)
+    let mensagemNomeQuant = encodeURIComponent(itemNomeQuant)
+    let mensagemPreco = encodeURIComponent(itemPreco)
     let fone = "+5588997458919"
 
-    window.open(`https://wa.me/${fone}?text=${mensagem}%0A Endereço -> Rua: ${endereco.value}%0A Número: ${endNum.value}%0A Complemnto: ${endComp.value}%0A Ponto de referência: ${endRef.value}%0A Bairro: ${endBairro.value}`, '_blank')
+    window.open(`https://wa.me/${fone}?text=${mensagemNomeQuant}%0A ${mensagemPreco}%0A %0A Rua: ${endereco.value}%0A Número: ${endNum.value}%0A Complemento: ${endComp.value}%0A Ponto de referência: ${endRef.value}%0A Bairro: ${endBairro.value} %0A %0A Forma de pagamento: ${formPag.value}`, '_blank')
 
     cart = []
     updateCart()
 
+    if(formEnd.style.display === 'flex'){
+        formEnd.style.display = 'none'
+    }
     fecharJanela()
     contCart.innerHTML = cart.length
     endereco.value = ""
@@ -314,6 +368,7 @@ function finalizarPedido() {
     endComp.value = ""
     endRef.value = ""
     endBairro.value = ""
+    formPag.value = ""
     contCart.style.display = 'none'
     totalBtCarrinho.textContent = ''
 }
