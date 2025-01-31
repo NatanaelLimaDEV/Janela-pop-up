@@ -1,22 +1,22 @@
-let jan = document.getElementById('janela')
-let buttonAdd = document.querySelector('button.add-cart')
-let menu = document.getElementById('menu')
-let itens = document.getElementById('itens')
-let totalDiv = document.getElementById('total')
-let totalBtCarrinho = document.getElementById('total-carrinho')
-let contCart = document.getElementById('quant-cart')
-let endereco = document.getElementById('end')
-let endNum = document.getElementById('num')
-let endComp = document.getElementById('comp')
-let endRef = document.getElementById('ref')
-let endBairro = document.getElementById('bairro')
-let formEnd = document.getElementById('formEndereco')
-let erroEnd = document.querySelector('p.erro')
-let formPag = document.getElementById('formPag')
-let spanHora = document.getElementById('data-span')
-let janInfoNegocio = document.getElementById('janela-info-negocio')
+const jan = document.getElementById('janela')
+const buttonAdd = document.querySelector('button.add-cart')
+const menu = document.getElementById('menu')
+const itens = document.getElementById('itens')
+const totalDiv = document.getElementById('total')
+const totalBtCarrinho = document.getElementById('total-carrinho')
+const contCart = document.getElementById('quant-cart')
+const endereco = document.getElementById('end')
+const endNum = document.getElementById('num')
+const endComp = document.getElementById('comp')
+const endRef = document.getElementById('ref')
+const endBairro = document.getElementById('bairro')
+const formEnd = document.getElementById('formEndereco')
+const erroEnd = document.querySelector('p.erro')
+const formPag = document.getElementById('formPag')
+const spanHora = document.getElementById('data-span')
+const janInfoNegocio = document.getElementById('janela-info-negocio')
 
-let aberto = veriRestoHora()
+const aberto = veriRestoHora()
 
 let cart = []
 
@@ -50,32 +50,32 @@ function fecharJanela() {
 }
 
 // fechando janela ao clicar na parte transparente
-jan.addEventListener('click', function (event) {
+jan.addEventListener('click', (event) => {
     if (event.target === jan) {
         jan.style.display = 'none'
     }
 })
 
-janInfoNegocio.addEventListener('click', function (event) {
+janInfoNegocio.addEventListener('click', (event) => {
     if (event.target === janInfoNegocio) {
         janInfoNegocio.style.display = 'none'
     }
 })
 
 // Evento click para adicionar ao carrinho, pegando nome e preço
-menu.addEventListener('click', function (event) {
-    let parentButton = event.target.closest('.add-cart')
+menu.addEventListener('click', (event) => {
+    const parentButton = event.target.closest('.add-cart')
 
     if (parentButton) {
-        let nome = parentButton.getAttribute('data-name')
-        let preco = parseFloat(parentButton.getAttribute('data-preco'))
+        const nome = parentButton.getAttribute('data-name')
+        const preco = Number.parseFloat(parentButton.getAttribute('data-preco'))
         addCard(nome, preco)
     }
 })
 
 // Adicionar ao carrinho
 function addCard(nome, preco) {
-    let verifiItem = cart.find(item => item.nome === nome)
+    const verifiItem = cart.find(item => item.nome === nome)
 
     // Se o item já existe, aumenta apenas a quantidade + 1
     if (verifiItem) {
@@ -109,8 +109,9 @@ function updateCart() {
 
     let total = 0
 
+    // biome-ignore lint/complexity/noForEach: <explanation>
     cart.forEach(item => {
-        let cartItens = document.createElement('div')
+        const cartItens = document.createElement('div')
 
         cartItens.innerHTML = `
         <div class="cardItensList">
@@ -158,23 +159,23 @@ function updateCart() {
 }
 
 //Evento click para remover item do carrinho
-itens.addEventListener('click', function () {
-    let parentButton = event.target.closest('.button-rem')
+itens.addEventListener('click', () => {
+    const parentButton = event.target.closest('.button-rem')
 
     if (parentButton) {
-        let nome = parentButton.getAttribute('data-name')
+        const nome = parentButton.getAttribute('data-name')
 
         removeItemCart(nome)
     }
 })
 
 //adicinar mais um item do carrinho
-itens.addEventListener('click', function () {
-    let parentButton = event.target.closest('.button-add')
+itens.addEventListener('click', () => {
+    const parentButton = event.target.closest('.button-add')
 
     if (parentButton) {
-        let nome = parentButton.getAttribute('data-name')
-        let preco = parentButton.getAttribute('data-preco')
+        const nome = parentButton.getAttribute('data-name')
+        const preco = parentButton.getAttribute('data-preco')
 
         addCard(nome, preco)
     }
@@ -182,10 +183,10 @@ itens.addEventListener('click', function () {
 
 // Remover item do carrinho
 function removeItemCart(nome) {
-    let index = cart.findIndex(item => item.nome === nome)
+    const index = cart.findIndex(item => item.nome === nome)
 
     if (index !== -1) {
-        let item = cart[index]
+        const item = cart[index]
 
         if (item.quantidade > 1) {
             Toastify({
@@ -240,24 +241,24 @@ function addEndereco(){
 }
 
 // Validar campos obrigatórios
-endereco.addEventListener('input', function (event) {
-    let endValor = event.target.value
+endereco.addEventListener('input', (event) => {
+    const endValor = event.target.value
 
     if (endValor !== "") {
         erroEnd.style.display = 'none'
         endereco.style.borderColor = '#b8b8b8'
     }
 })
-endNum.addEventListener('input', function (event) {
-    let endValor = event.target.value
+endNum.addEventListener('input', (event) => {
+    const endValor = event.target.value
 
     if (endValor !== "") {
         erroEnd.style.display = 'none'
         endNum.style.borderColor = '#b8b8b8'
     }
 })
-endBairro.addEventListener('input', function (event) {
-    let endValor = event.target.value
+endBairro.addEventListener('input', (event) => {
+    const endValor = event.target.value
 
     if (endValor !== "") {
         erroEnd.style.display = 'none'
@@ -268,7 +269,7 @@ endBairro.addEventListener('input', function (event) {
 // Finalizar pedido
 function finalizarPedido() {
 
-    let aberto = veriRestoHora()
+    const aberto = veriRestoHora()
     if (!aberto) {
         Toastify({
             text: "Ops o restaurante está fechado!",
@@ -338,20 +339,20 @@ function finalizarPedido() {
     }
 
     // Enviar o pedido api WhatsApp
-    let itemNomeQuant = cart.map((item) => {
+    const itemNomeQuant = cart.map((item) => {
         return (
             ` -> ${item.nome}, Quantidade: ${item.quantidade}`
         )
     }).join('')
-    let itemPreco = cart.map((item) => {
+    const itemPreco = cart.map((item) => {
         return (
             `Preço: R$ ${item.preco}`
         )
     }).join('')
 
-    let mensagemNomeQuant = encodeURIComponent(itemNomeQuant)
-    let mensagemPreco = encodeURIComponent(itemPreco)
-    let fone = "+5588997458919"
+    const mensagemNomeQuant = encodeURIComponent(itemNomeQuant)
+    const mensagemPreco = encodeURIComponent(itemPreco)
+    const fone = "+5588997458919"
 
     window.open(`https://wa.me/${fone}?text=${mensagemNomeQuant}%0A ${mensagemPreco}%0A %0A Rua: ${endereco.value}%0A Número: ${endNum.value}%0A Complemento: ${endComp.value}%0A Ponto de referência: ${endRef.value}%0A Bairro: ${endBairro.value} %0A %0A Forma de pagamento: ${formPag.value}`, '_blank')
 
@@ -375,8 +376,8 @@ function finalizarPedido() {
 
 // Verificar horário
 function veriRestoHora() {
-    let data = new Date()
-    let hora = data.getHours()
+    const data = new Date()
+    const hora = data.getHours()
     return hora >= 1 && hora < 22
 
     // True = aberto
