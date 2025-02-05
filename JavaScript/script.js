@@ -62,19 +62,20 @@ janInfoNegocio.addEventListener('click', (event) => {
     }
 })
 
-// Evento click para adicionar ao carrinho, pegando nome e preço
+// Evento click para adicionar ao carrinho, pegando nome, preço e diretorio da imagem
 menu.addEventListener('click', (event) => {
     const parentButton = event.target.closest('.add-cart')
 
     if (parentButton) {
         const nome = parentButton.getAttribute('data-name')
         const preco = Number.parseFloat(parentButton.getAttribute('data-preco'))
-        addCard(nome, preco)
+        const img = parentButton.getAttribute('data-img')
+        addCard(nome, preco, img)
     }
 })
 
 // Adicionar ao carrinho
-function addCard(nome, preco) {
+function addCard(nome, preco, img) {
     const verifiItem = cart.find(item => item.nome === nome)
 
     // Se o item já existe, aumenta apenas a quantidade + 1
@@ -85,6 +86,7 @@ function addCard(nome, preco) {
             nome,
             preco,
             quantidade: 1,
+            img,
         })
     }
 
@@ -116,7 +118,7 @@ function updateCart() {
         cartItens.innerHTML = `
         <div class="cardItensList">
             <div class="itensList">
-                <img src="imagens/hamb-1.png" alt="Smash" class="burguer-listCard">
+                <img src="${item.img}" alt="Smash" class="burguer-listCard">
                 <div>
                     <p>${item.nome}</p>
                     <p class="desc-hamb">Quantidade: ${item.quantidade}</p>
@@ -176,8 +178,8 @@ itens.addEventListener('click', () => {
     if (parentButton) {
         const nome = parentButton.getAttribute('data-name')
         const preco = parentButton.getAttribute('data-preco')
-
-        addCard(nome, preco)
+        const img = parentButton.getAttribute('data-img')
+        addCard(nome, preco, img)
     }
 })
 

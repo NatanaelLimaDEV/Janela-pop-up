@@ -16,6 +16,12 @@ button{
     cursor: pointer;
 }
 
+h3 {
+    margin: 20px 0;
+    font-size: 40px;
+    text-align: center;
+}
+
 .topo-logo{
     display: flex;
     align-items: center;
@@ -126,6 +132,10 @@ button{
     font-weight: 500;
     color: rgb(127, 143, 159);
     font-size: 12px;
+}
+
+.card-bebidas{
+    margin-top: 20px;
 }
 
 .cart {
